@@ -1,15 +1,15 @@
 steps:
     - id: "docker build"
       name: "gcr.io/cloud-builders/docker"
-      args: ["build", "-t", "us.gcr.io/$PROJECT_ID/api", "."]
+      args: ["build", "-t", "us.gcr.io/$PROJECT_ID/firestore-fastapi", "--file", "docker/Dockerfile", "."]
 
     - id: "docker test"
       name: "gcr.io/cloud-builders/docker"
-      args: ["build", "-t", "us.gcr.io/$PROJECT_ID/api-test", "--file", "Dockerfile-test", "."]
+      args: ["build", "-t", "us.gcr.io/$PROJECT_ID/firestore-fastapi-test", "--file", "docker/test/Dockerfile", "."]
 
     - id: "docker push"
       name: "gcr.io/cloud-builders/docker"
-      args: ["push", "us.gcr.io/$PROJECT_ID/api"]
+      args: ["push", "us.gcr.io/$PROJECT_ID/firestore-fastapi"]
 
     - id: "cloud run deploy"
       name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
@@ -18,8 +18,8 @@ steps:
           - -c
           - |
             gcloud run deploy \
-            api-$BRANCH_NAME \
-            --image=us.gcr.io/$PROJECT_ID/api:latest \
+            firestore-fastapi-$BRANCH_NAME \
+            --image=us.gcr.io/$PROJECT_ID/firestore-fastapi:latest \
             --cpu=2 \
             --port=8080 \
             --memory=2048Mi \
@@ -30,6 +30,4 @@ steps:
             --region=us-central1 \
             --allow-unauthenticated \
             --revision-suffix=$SHORT_SHA \
-            --set-env-vars=PROJECT_ID=$PROJECT_ID,SHORT_SHA=$SHORT_SHA \
-            --set-cloudsql-instances=$PROJECT_ID:us-central1:delta-api \
-            --service-account=deltabot@$PROJECT_ID.iam.gserviceaccount.com
+            --set-env-vars=PROJECT_ID=$PROJECT_ID,SHORT_SHA=$SHORT_SHA

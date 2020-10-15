@@ -162,8 +162,6 @@ shippable
 .git
 
 tmp/
-tests/
+tests/**/test_*
 alembic/
 docs/
-.pytest_cache/
-assets/scripts/

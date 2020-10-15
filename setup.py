@@ -14,4 +14,5 @@ setup(name='firestore-fastapi',
           'requests==2.24.0',
           'uvloop==0.14.0',
           'httptools==0.1.1',
+          "google-cloud-firestore==1.9.0",
       ])

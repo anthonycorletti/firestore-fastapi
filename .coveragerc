@@ -5,3 +5,4 @@ omit =
     *__init__.py
     config.py
     setup.py
+    gunicorn_config.py
