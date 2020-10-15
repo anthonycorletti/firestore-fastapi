@@ -1,0 +1,7 @@
+[run]
+omit =
+    env/*
+    tests/*
+    *__init__.py
+    config.py
+    setup.py
