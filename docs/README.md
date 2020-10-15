@@ -34,4 +34,4 @@ docker build -t firestore-fastapi-test --file docker/test/Dockerfile .
 
 ## deploy to cloud run via cloud build
 
-Follow the docs [here](https://cloud.google.com/cloud-build/docs/automating-builds/create-github-app-triggers) to learn how to automate builds via the Google Cloud Build GitHub App.
+Follow the docs [here](https://cloud.google.com/cloud-build/docs/automating-builds/create-github-app-triggers) to learn how to automate builds via the Google Cloud Build GitHub App. You will also need to enable a Native Firestore database (not Cloud Datastore!) and enable the Cloud Run Admin API via Cloud Build's settings.
