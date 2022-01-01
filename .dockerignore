@@ -162,6 +162,3 @@ shippable
 .git
 
 tmp/
-tests/**/test_*
-alembic/
-docs/

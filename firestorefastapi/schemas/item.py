@@ -14,9 +14,25 @@ class ItemCreate(ItemBase):
     created_at: datetime = Field(default_factory=datetime.utcnow)
     updated_at: datetime = Field(default_factory=datetime.utcnow)
 
+    class Config:
+        schema_extra = {
+            "example": {
+                "name": "An Item",
+                "desc": "A quite common item.",
+            }
+        }
+
 
 class ItemUpdate(ItemBase):
     updated_at: datetime = Field(default_factory=datetime.utcnow)
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "name": "An Item",
+                "desc": "A very peculiar item.",
+            }
+        }
 
 
 class Item(ItemBase):

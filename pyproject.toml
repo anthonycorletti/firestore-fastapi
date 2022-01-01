@@ -1,0 +1,38 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "firestorefastapi"
+authors = [{name = "Anthony Corletti", email = "anthcor@gmail.com"}]
+readme = "README.md"
+classifiers = ["License :: OSI Approved :: MIT License"]
+dynamic = ["version", "description"]
+dependencies = [
+    "fastapi>=0.70.1",
+    "gunicorn>=20.1.0",
+    "uvicorn>=0.16.0",
+    "google-cloud-firestore>=2.3.4"
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=6.2.5",
+    "mypy>=0.910",
+    "coverage>=6.1.1",
+    "pytest-cov>=3.0.0",
+    "mock-firestore>=0.10.0"
+]
+dev = [
+    "flake8>=3.9.2",
+    "black>=21.10b0",
+    "isort>=5.9.3",
+    "autoflake>=1.4",
+    "flake8-docstrings>=1.6.0",
+]
+
+[project.urls]
+Home = "https://github.com/anthonycorletti/firestore-fastapi"
+
+[tool.isort]
+profile = "black"
