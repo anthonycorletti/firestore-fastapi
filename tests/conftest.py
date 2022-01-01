@@ -1,16 +1,12 @@
 import pytest
 from starlette.testclient import TestClient
 
-from database import db
-from main import api
+from firestorefastapi.database import db
+from firestorefastapi.main import api
 
 
 @pytest.fixture()
 def client():
-    """
-    When using the "client" fixture in test cases, we'll get full database
-    rollbacks between test cases
-    """
     with TestClient(api) as client:
         yield client
 

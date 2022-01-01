@@ -1,8 +1,9 @@
 [run]
+source =
+    firestorefastapi
+    tests
+
 omit =
-    env/*
-    tests/*
     *__init__.py
-    config.py
-    setup.py
-    gunicorn_config.py
+
+parallel = True
