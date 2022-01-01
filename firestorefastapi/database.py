@@ -6,6 +6,7 @@ from google.cloud import firestore
 if "pytest" in sys.argv[0]:
     # testing db
     from mockfirestore import MockFirestore
+
     db = MockFirestore()
 else:
     # not a testing db

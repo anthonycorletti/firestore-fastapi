@@ -1,8 +1,8 @@
 from typing import List
 from uuid import UUID
 
-from database import db
-from v1.schemas.item import Item, ItemCreate, ItemUpdate
+from firestorefastapi.database import db
+from firestorefastapi.schemas.item import Item, ItemCreate, ItemUpdate
 
 
 class ItemDAO:
@@ -11,8 +11,7 @@ class ItemDAO:
     def create(self, item_create: ItemCreate) -> Item:
         data = item_create.dict()
         data["id"] = str(data["id"])
-        doc_ref = db.collection(
-            self.collection_name).document(str(item_create.id))
+        doc_ref = db.collection(self.collection_name).document(str(item_create.id))
         doc_ref.set(data)
         return self.get(item_create.id)
 
@@ -25,8 +24,11 @@ class ItemDAO:
 
     def list(self) -> List[Item]:
         items_ref = db.collection(self.collection_name)
-        return [Item(**doc.get().to_dict())
-                for doc in items_ref.list_documents() if doc.get().to_dict()]
+        return [
+            Item(**doc.get().to_dict())
+            for doc in items_ref.list_documents()
+            if doc.get().to_dict()
+        ]
 
     def update(self, id: UUID, item_update: ItemUpdate) -> Item:
         data = item_update.dict()
