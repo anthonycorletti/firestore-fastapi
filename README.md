@@ -1,4 +1,4 @@
-# firestore-fastapi [![Awesome](https://awesome.re/badge.svg)](https://github.com/steren/awesome-cloudrun/)
+# firestore-fastapi
 
 Deploy a FastAPI service to Cloud Run that uses Google Cloud Firestore.
 
