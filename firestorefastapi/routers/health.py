@@ -7,10 +7,9 @@ from firestorefastapi.logger import logger
 from firestorefastapi.schemas.health import HealthcheckResponse
 
 router = APIRouter()
-tags = ["health"]
 
 
-@router.get("/healthcheck", response_model=HealthcheckResponse, tags=tags)
+@router.get("/healthcheck", response_model=HealthcheckResponse, tags=["health"])
 def healthcheck() -> HealthcheckResponse:
     message = "healthy"
     logger.debug(message)
