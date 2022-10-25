@@ -24,10 +24,7 @@ class ItemDAO:
 
     def list(self) -> List[Item]:
         items_ref = db.collection(self.collection_name).stream()
-        return [
-            Item(**doc.to_dict())
-            for doc in items_ref
-        ]
+        return [Item(**doc.to_dict()) for doc in items_ref]
 
     def update(self, id: UUID, item_update: ItemUpdate) -> Item:
         data = item_update.dict()
