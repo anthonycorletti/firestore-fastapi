@@ -23,11 +23,10 @@ class ItemDAO:
         return
 
     def list(self) -> List[Item]:
-        items_ref = db.collection(self.collection_name)
+        items_ref = db.collection(self.collection_name).stream()
         return [
-            Item(**doc.get().to_dict())
-            for doc in items_ref.list_documents()
-            if doc.get().to_dict()
+            Item(**doc.to_dict())
+            for doc in items_ref
         ]
 
     def update(self, id: UUID, item_update: ItemUpdate) -> Item:
